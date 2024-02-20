@@ -1,0 +1,40 @@
+# Apache License
+# Version 2.0, January 2004
+# Author: Eugene Tkachenko
+
+name: Pull Request Details
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened]
+
+jobs:
+  ai_pr_reviewer:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Set up Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: '3.x'
+
+      - name: Install dependencies
+        run: pip install -r .ai/io/nerdythings/requirements.txt
+      
+      - name: Get Pull Request Details
+        env:
+          GITHUB_HEAD_REF: ${{ github.head_ref }}
+          GITHUB_BASE_REF: ${{ github.base_ref }}
+          CHATGPT_KEY: ${{ secrets.CHATGPT_KEY }}
+          CHATGPT_MODEL: ${{ secrets.CHATGPT_MODEL }}
+          GITHUB_TOKEN: ${{ secrets.API_KEY }}
+          TARGET_EXTENSIONS: ${{ vars.TARGET_EXTENSIONS }}
+          REPO_OWNER: ${{ github.repository_owner }}
+          REPO_NAME: ${{ github.event.repository.name }}
+          PULL_NUMBER: ${{ github.event.number }}
+        run: |
+          python .ai/io/nerdythings/github_reviewer.py
