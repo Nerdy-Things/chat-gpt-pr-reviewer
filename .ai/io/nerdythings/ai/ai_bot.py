@@ -8,20 +8,27 @@ from ai.line_comment import LineComment
 class AiBot(ABC):
     
     __no_response = "No critical issues found"
-    __problems="errors, issues, potential crashes or unhandled exceptions"
+    __problems="errors, issues, memory leaks, possible crashes or unhandled exceptions"
     __chat_gpt_ask_long="""
-Could you describe briefly {problems} for the next code with given git diffs? 
+We have an Android Jetpack project that follows the latest Google recommendations.
+The code should use coroutines and must be thread safe. It should not have ANR as well.
+
+Could you describe briefly {problems} for the next code with given code?
 Please, also, do not add intro words, just print errors in the format: "line_number : cause effect"
+Line numbers should depend only on the code, not on the diffs.
 If there are no {problems} just say "{no_response}".
 
-DIFFS:
+Code Language: Kotlin/Java
+Android API Level / Jetpack Version: Latest
+Architectural Pattern: MVVM
 
-{diffs}
-
-Full code from the file:
+Full code of the file:
 
 {code}
-"""
+
+GIT DIFFS:
+
+{diffs}
 
     @abstractmethod
     def ai_request_diffs(self, code, diffs) -> str:
