@@ -38,3 +38,10 @@ jobs:
           PULL_NUMBER: ${{ github.event.number }}
         run: |
           python .ai/io/nerdythings/github_reviewer.py
+
+      - name: Upload file as an artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: AI-requests
+          path: output.txt
+          retention-days: 1
