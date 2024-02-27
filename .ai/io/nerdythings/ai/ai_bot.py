@@ -29,6 +29,7 @@ Full code of the file:
 GIT DIFFS:
 
 {diffs}
+"""
 
     @abstractmethod
     def ai_request_diffs(self, code, diffs) -> str:
