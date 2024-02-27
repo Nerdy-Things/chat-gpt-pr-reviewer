@@ -44,3 +44,4 @@ jobs:
         with:
           name: AI-requests
           path: output.txt
+          retention-days: 1
