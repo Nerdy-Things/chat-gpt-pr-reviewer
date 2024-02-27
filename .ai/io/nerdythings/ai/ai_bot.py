@@ -11,9 +11,10 @@ class AiBot(ABC):
     __problems="errors, issues, memory leaks, possible crashes or unhandled exceptions"
     __chat_gpt_ask_long="""
 We have an Android Jetpack project that follows the latest Google recommendations.
-The code should use coroutines and be thread safe. It should not have ANR as well.
+The code should use coroutines and must be thread safe. It should not have ANR as well.
 
 Could you describe briefly {problems} for the next code with given code?
+Please, also, do not add intro words, just print errors in the format: "line_number : cause effect"
 Line numbers should depend only on the code, not on the diffs.
 If there are no {problems} just say "{no_response}".
 
