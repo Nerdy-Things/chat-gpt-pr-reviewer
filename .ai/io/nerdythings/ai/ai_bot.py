@@ -25,11 +25,12 @@ Architectural Pattern: MVVM
 Full code of the file:
 
 {code}
-"""
 
-# GIT DIFFS:
-#
-# {diffs}
+GIT DIFFS:
+
+{diffs}
+
+"""
 
     @abstractmethod
     def ai_request_diffs(self, code, diffs) -> str:
