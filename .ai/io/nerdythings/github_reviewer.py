@@ -12,6 +12,8 @@ from env_vars import EnvVars
 from repository.github import GitHub
 from repository.repository import RepositoryError
 
+log_file = open('output.txt', 'a')
+
 def main():
     vars = EnvVars()
     vars.check_vars()
@@ -52,6 +54,10 @@ def main():
         
         Log.print_green(f"Asking AI. Content Len:{len(file_content)} Diff Len: {len(file_diffs)}")
         response = ai.ai_request_diffs(code=file_content, diffs=file_diffs)
+
+        log_file.write(f"{file_content}\n-----\n{file_diffs}\n-----\n{response}\n-----\n")
+        log_file.write("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n")
+
         if AiBot.is_no_issues_text(response):
             Log.print_green("File looks good. Continue", file)
         else:
@@ -96,3 +102,5 @@ def post_general_comment(github: GitHub, file: str, text:str) -> bool:
 
 if __name__ == "__main__":
     main()
+
+log_file.close()
