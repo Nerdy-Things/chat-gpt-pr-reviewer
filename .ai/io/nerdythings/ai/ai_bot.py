@@ -8,34 +8,24 @@ from ai.line_comment import LineComment
 class AiBot(ABC):
     
     __no_response = "No critical issues found"
-    __problems="errors, issues, potential crashes or unhandled exceptions"
+    __problems="errors, issues, memory leaks, possible crashes or unhandled exceptions"
     __chat_gpt_ask_long="""
-We have an Android Jetpack project that adheres to the latest Google recommendations and uses Kotlin.
-Please analyze the following code and git diffs to identify {problems}.
-Format the response as "line_number : cause effect".
-If there are no {problems}, respond with "{no_response}".
+We have an Android Jetpack project that follows the latest Google recommendations.
+The code should use coroutines and be thread safe. It should not have ANR as well.
+
+Could you describe briefly {problems} for the next code with given code?
+Line numbers should depend only on the code, not on the diffs.
+If there are no {problems} just say "{no_response}".
 
 Code Language: Kotlin/Java
 Android API Level / Jetpack Version: Latest
 Architectural Pattern: MVVM
 
 Full code of the file:
-{code}
 
-GIT DIFFS:
-{diffs}
+{code}
 """
 
-# We have an Android Jetpack project that follows the latest Google recommendations.
-# Could you describe briefly {problems} for the next code with given git diffs?
-# Please, also, do not add intro words, just print errors in the format: "line_number : cause effect"
-# Line numbers should depend only on the code, not on the diffs.
-# If there are no {problems} just say "{no_response}".
-#
-# Full code of the file:
-#
-# {code}
-#
 # GIT DIFFS:
 #
 # {diffs}
