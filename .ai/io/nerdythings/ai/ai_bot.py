@@ -12,15 +12,16 @@ class AiBot(ABC):
     __chat_gpt_ask_long="""
 Could you describe briefly {problems} for the next code with given git diffs? 
 Please, also, do not add intro words, just print errors in the format: "line_number : cause effect"
+Lines should come from the code, not the diffs
 If there are no {problems} just say "{no_response}".
-
-DIFFS:
-
-{diffs}
 
 Full code from the file:
 
 {code}
+
+DIFFS:
+
+{diffs}
 """
 
     @abstractmethod
