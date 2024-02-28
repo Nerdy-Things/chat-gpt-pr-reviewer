@@ -35,12 +35,10 @@ class Git:
     @staticmethod
     def get_diff_files(remote_name, head_ref, base_ref) -> List[str]:
         command = ["git", "diff", "--name-only", f"{remote_name}/{base_ref}", f"{remote_name}/{head_ref}"]
-#         command = ["git", "diff", "--name-only", f"{remote_name}/{base_ref}", f"{head_ref}"]
         result = Git.__run_subprocess(command)
         return result.strip().splitlines()
         
     @staticmethod
     def get_diff_in_file(remote_name, head_ref, base_ref, file_path) -> str:
         command = ["git", "diff", f"{remote_name}/{base_ref}", f"{remote_name}/{head_ref}", "--", file_path]
-#         command = ["git", "diff", f"{remote_name}/{base_ref}", f"{head_ref}", "--", file_path]
         return Git.__run_subprocess(command)
