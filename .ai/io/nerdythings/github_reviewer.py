@@ -37,6 +37,7 @@ def main():
         file_extension = file_extension.lstrip('.')
         if file_extension not in vars.target_extensions:
             Log.print_yellow(f"Skipping, unsuported extension {file_extension} file {file}")
+            continue
 
         try:
             with open(file, 'r') as file_opened:
@@ -55,7 +56,9 @@ def main():
         
         Log.print_green(f"Asking AI. Content Len:{len(file_content)} Diff Len: {len(file_diffs)}")
         response = ai.ai_request_diffs(code=file_content, diffs=file_diffs)
+
         log_file.write(f"{separator}{file_content}{separator}{file_diffs}{separator}{response}{separator}")
+
         if AiBot.is_no_issues_text(response):
             Log.print_green("File looks good. Continue", file)
         else:
