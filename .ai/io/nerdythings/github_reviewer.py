@@ -79,9 +79,9 @@ def post_line_comment(github: GitHub, file: str, text:str, line: int):
     Log.print_green("Posting line", file, line, text)
     try:
         git_response = github.post_comment_to_line(
-            text=text, 
-            commit_id=Git.get_last_commit_sha(file=file), 
-            file_path=file, 
+            text=text,
+            commit_id=Git.get_last_commit_sha(file=file),
+            file_path=file,
             line=line,
         )
         Log.print_yellow("Posted", git_response)
