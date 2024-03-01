@@ -1,0 +1,15 @@
+{
+  "userProfile": {
+    "userId": "12345",
+    "username": "user123",
+    "email": "user123@example.com",
+    "fullName": "John Doe",
+    "dateOfBirth": "1990-01-01",
+    "profilePictureUrl": "https://example.com/images/user123.jpg",
+    "bio": "Just a tech enthusiast and avid reader.",
+    "location": "New York, USA",
+    "joinedDate": "2020-05-15",
+    "followingCount": 150,
+    "followersCount": 200
+  }
+}
