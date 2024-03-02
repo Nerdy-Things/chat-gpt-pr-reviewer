@@ -45,10 +45,10 @@ GIT DIFFS:
         )
 
     @staticmethod
-    def is_no_issues_text(source) -> bool:
+    def is_no_issues_text(source: str) -> bool:
         target = AiBot.__no_response.replace(" ", "")
-        it = iter(source)
-        return all(c in it for c in target)
+        source_no_spaces = source.replace(" ", "")
+        return source_no_spaces.startswith(target)
     
     @staticmethod
     def split_ai_response(input) -> list[LineComment]:

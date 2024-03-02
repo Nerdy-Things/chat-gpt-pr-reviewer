@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">NetworkInspector</string>
+    <string name="celebrity">Celebrity</string>
+    <string name="user">User</string>
 </resources>
