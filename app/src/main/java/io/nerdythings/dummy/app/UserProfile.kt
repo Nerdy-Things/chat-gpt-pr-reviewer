@@ -1,7 +1,9 @@
 package io.nerdythings.dummy.app
 
+// Should be a data class
 @Suppress("unused")
 class UserProfile(
+    // API fields could be nullable
     val userId: String,
     val username: String,
     val email: String,
@@ -15,6 +17,8 @@ class UserProfile(
     val followersCount: Int
 )
 
+// Should be a data class
 class UserProfileWrapper(
+    // API fields could be nullable
     val userProfile: UserProfile
 )
