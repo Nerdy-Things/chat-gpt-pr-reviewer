@@ -25,7 +25,7 @@ jobs:
       - name: Install dependencies
         run: pip install -r .ai/io/nerdythings/requirements.txt
       
-      - name: Get Pull Request Details
+      - name: Run Reviewer Script
         env:
           GITHUB_HEAD_REF: ${{ github.head_ref }}
           GITHUB_BASE_REF: ${{ github.base_ref }}
@@ -39,7 +39,7 @@ jobs:
         run: |
           python .ai/io/nerdythings/github_reviewer.py
 
-      - name: Upload file as an artifact
+      - name: Upload result as an artifact
         uses: actions/upload-artifact@v4
         with:
           name: AI-requests
